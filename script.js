@@ -1,9 +1,9 @@
 const messages = [
-    "Eres la persona más increíble del mundo 💖",
-    "Me haces sonreír todos los días 😊",
-    "No hay nadie como tú 💫",
-    "Siempre estaré aquí para ti ❤️",
-    "Eres lo mejor que me ha pasado ✨"
+    "eres una persona increible y me alegra tenerte en mi vida 💖",
+    "algo q me gusta de ti, es tu compañia, entonces no pienses q no me gusta tenerte cerca 😊",
+    "eres de esas personas q realmente valen la pena 💫",
+    "gracias por ser como eres, no cambies nunca ❤️",
+    "tqm papu <3 ✨"
 ];
 
 let index = 0;
