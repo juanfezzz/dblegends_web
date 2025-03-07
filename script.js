@@ -16,7 +16,7 @@ function activatePage() {
         document.getElementById("photo").style.display = "block";
         activated = true;
     }
-    changeText();
+    changeText(); // Solo cambia el texto después de activarse
 }
 
 function changeText() {
@@ -27,7 +27,7 @@ function changeText() {
     }
 }
 
-// Asegúrate de que el botón tenga el evento bien asignado
+// Asegura que el botón tenga el evento bien asignado
 document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("mainButton");
     if (button) {
