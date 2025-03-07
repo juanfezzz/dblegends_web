@@ -7,20 +7,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     flex-direction: column;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+    padding: 20px;
 }
 
 .container {
-    width: 90%;
-    max-width: 400px;
+    max-width: 90%;
+    margin-top: 20px;
 }
 
 img {
-    width: 90%;
+    width: 80%;
     max-width: 300px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -29,18 +27,19 @@ img {
 }
 
 p {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     margin: 20px;
     color: white;
+    word-wrap: break-word;
 }
 
 button {
     background-color: white;
     color: black;
     border: none;
-    padding: 18px 35px;
-    font-size: 24px;
+    padding: 15px 30px;
+    font-size: 22px;
     border-radius: 15px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, background 0.5s, color 0.5s, box-shadow 0.5s;
@@ -65,27 +64,45 @@ button:active {
     color: white;
 }
 
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+    p {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* 🌙 Estilos cuando se activa la página en tonos morados */
 body.active {
-    background-color: #ffe6f2 !important;
-    color: #d0006f !important;
-    border: 10px solid #ff4081;
+    background-color: #d8c1ff !important; /* Lila claro */
+    color: #4b0082 !important; /* Morado oscuro */
+    border: 10px solid #7b5bbe; /* Morado medio */
     padding: 20px;
-    box-shadow: 0px 0px 20px rgba(255, 64, 129, 0.6);
+    box-shadow: 0px 0px 20px rgba(123, 91, 190, 0.6);
 }
 
 body.active p,
 body.active .signature {
-    color: #d0006f !important;
+    color: #4b0082 !important; /* Morado oscuro */
 }
 
 body.active button {
-    background-color: #ff4081 !important;
+    background-color: #6a0dad !important; /* Morado */
     color: white !important;
-    box-shadow: 0px 4px 10px rgba(255, 64, 129, 0.5);
+    box-shadow: 0px 4px 10px rgba(106, 13, 173, 0.5);
 }
 
 body.active button:hover {
-    background-color: #ff1a66 !important;
+    background-color: #5c0099 !important; /* Morado más oscuro */
 }
 
 body.active button:active {
@@ -95,10 +112,11 @@ body.active button:active {
 body.active img {
     display: block !important;
     animation: fadeIn 1s;
-    border: 4px solid #ff4081;
-    box-shadow: 0px 8px 15px rgba(255, 64, 129, 0.4);
+    border: 4px solid #7b5bbe; /* Morado medio */
+    box-shadow: 0px 8px 15px rgba(123, 91, 190, 0.4);
 }
 
+/* ✨ Animación de aparición */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
