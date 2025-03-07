@@ -20,6 +20,17 @@ function activatePage() {
 }
 
 function changeText() {
-    document.getElementById("text").textContent = messages[index];
-    index = (index + 1) % messages.length;
+    const textElement = document.getElementById("text");
+    if (textElement) {
+        textElement.textContent = messages[index];
+        index = (index + 1) % messages.length;
+    }
 }
+
+// Asegúrate de que el botón tenga el evento bien asignado
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("mainButton");
+    if (button) {
+        button.addEventListener("click", activatePage);
+    }
+});
