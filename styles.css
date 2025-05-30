@@ -1,0 +1,292 @@
+body {
+  font-family: dblegends, sans-serif;
+  background-color: #111;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+@font-face {
+  font-family: 'dblegends';
+  src: url('font/dblegends.ttf') format('truetype');
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filters button:hover {
+  background-color: #666;
+}
+
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.character {
+  background-color: #222;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  transition: transform 0.2s;
+}
+
+.character:hover {
+  transform: scale(1.05);
+  background-color: #333;
+}
+
+.character img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  max-width: 1000px;  /* Ancho máximo */
+  display: flex;  /* Flexbox para organizar horizontalmente */
+  flex-direction: row; /* Mantener los elementos en fila (horizontal) */
+  align-items: flex-start; /* Alineación vertical desde arriba */
+  justify-content: space-between; /* Separar la imagen de las estadísticas */
+  height: auto;
+  overflow: hidden; /* Evitar el desbordamiento */
+}
+
+.modal-content img {
+    max-width: 400px;  /* Limita el ancho máximo de la imagen */
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;  /* Espacio entre la imagen y las estadísticas */
+    transition: opacity 1s ease-in-out; /* Transición suave */
+    opacity: 1; /* Asegúrate de que la opacidad inicial sea 1 */
+}
+
+/* Contenedor de las estadísticas */
+.stats-container {
+  flex: 1;  /* Ocupa el espacio restante */
+  text-align: center;  /* Alineación a la izquierda */
+  margin-bottom: 20px; /* Espaciado antes del botón */
+  max-width: 500px;  /* Limita el tamaño máximo del contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Mantiene el contenido en la parte superior */
+}
+
+.stats-container h3 {
+  margin-top: 0;  /* Quitamos el margen superior */
+}
+
+button#show-max-stats-button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;  /* Ocupa todo el ancho disponible */
+  max-width: 150px;  /* Limita el tamaño del botón */
+  position: absolute;  /* Fija el botón en la parte inferior */
+  bottom: 15px;  /* Lo coloca 10px desde la parte inferior */
+  left: 50%;  /* Centra el botón horizontalmente */
+  transform: translateX(100%);  /* Asegura que el botón esté perfectamente centrado */
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+button#show-max-stats-button:hover {
+  background-color: #666;
+}
+
+/* Botón de cierre */
+#close-button {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.type-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.filters button:hover .type-icon {
+  transform: scale(1.1);
+}
+
+.filters button {
+  background-color: transparent;
+  border: 3px solid #888;
+  border-radius: 12px;
+  padding: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.filters button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+.filters button img.type-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.filters button[data-type="hero"] {
+  border-color: blue;
+}
+.filters button[data-type="extreme"] {
+  border-color: purple;
+}
+.filters button[data-type="sparking"] {
+  border-color: orange;
+}
+.filters button[data-type="legends limited"] {
+  border-color: gold;
+}
+.filters button[data-type="ultra"] {
+  border: 4px solid transparent;
+  border-radius: 12px;
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.filters button[data-type="ultra"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.2);
+}
+
+.filters button[data-type="ultra"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red);
+  background-size: 400% 400%;
+  border-radius: 12px;
+  z-index: -1;
+  animation: rainbow-border 5s ease infinite;
+}
+
+@keyframes rainbow-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Título de la sección de personajes */
+#characters-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff; /* Color del texto blanco */
+  background-color: #000; /* Fondo negro para el título */
+  padding: 10px 0; /* Espaciado alrededor del título */
+}
+
+#characters-title img {
+  width: 250px; /* Tamaño del logo */
+  margin-right: 15px; /* Espacio entre el logo y el texto */
+  height: auto;
+}
+
+#characters-title span {
+  color: #fff; /* Asegura que el texto del título sea blanco */
+}
+
+#affinity-image {
+    max-width: 120px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Esto centra las imágenes dentro de su contenedor */
+}
+
+ #rareza-image {
+    max-width: 250px;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Esto centra las imágenes dentro de su contenedor */
+    margin-bottom: 15px;
+}
+
+.modal-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Botón para cambiar la imagen, ubicado en la esquina derecha */
+#change-image-button {
+    position: absolute;   /* Esto lo posiciona en relación al contenedor más cercano */
+    top: 10px;            /* Ajusta la distancia desde la parte superior */
+    right: 10px;          /* Ajusta la distancia desde la parte derecha */
+    padding: 5px;         /* Ajusta el tamaño del botón */
+    background-color: transparent; /* Fondo transparente */
+    border: none;         /* Sin borde */
+    cursor: pointer;      /* Aparece como puntero cuando pasas el mouse sobre el botón */
+    display: none;        /* Lo ocultamos por defecto */
+}
+
+#change-image-button img {
+    width: 30px;         /* Ajusta el tamaño de la imagen dentro del botón */
+    height: 30px;        /* Ajusta el tamaño de la imagen dentro del botón */
+    object-fit: cover;   /* Asegura que la imagen mantenga su aspecto original sin distorsión */
+}

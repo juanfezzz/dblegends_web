@@ -1,0 +1,70 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Personajes - Dragon Ball Legends</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="characters-title">
+  <img src="https://dble.bn-ent.net/es/assets/img/top/top_logo.png?2019070801" alt="DB Legends Logo">
+  <span>Personajes</span>
+</div>
+
+<div class="filters">
+  <button onclick="filterCharacters('all')">Todos</button>
+  
+  <button onclick="filterCharacters('hero')" data-type="hero">
+    <img src="https://i.ibb.co/p6bKkRCR/Gas-txt-Rarity-HERO.png" alt="Hero" class="type-icon">
+  </button>
+  <button onclick="filterCharacters('extreme')" data-type="extreme">
+    <img src="https://i.ibb.co/tFz0XvS/Gas-txt-Rarity-EXTREME.png" alt="Extreme" class="type-icon">
+  </button>
+  <button onclick="filterCharacters('sparking')" data-type="sparking">
+    <img src="https://i.ibb.co/rfKBNFJQ/Gas-txt-Rarity-SPARKING.png" alt="Sparking" class="type-icon">
+  </button>
+  <button onclick="filterCharacters('legends limited')" data-type="legends limited">
+    <img src="https://i.ibb.co/fYSs7mkg/Chara-Top-icn-Legends-Limited-Badge.png" alt="Legends Limited" class="type-icon">
+  </button>
+  <button onclick="filterCharacters('ultra')" data-type="ultra">
+    <img src="https://i.ibb.co/WpkhLJN4/Gas-txt-Rarity-ULTRA.png" alt="ULTRA" class="type-icon">
+  </button>
+</div>
+
+<div id="character-list" class="character-list"></div>
+
+<!-- Ventana modal -->
+<!-- Modal Structure -->
+<div id="character-modal" class="modal" style="display: none;">
+    <div id="modal-content" class="modal-content">
+        <!-- Contenedor para la imagen y el botón -->
+        <div class="modal-image-container">
+            <img id="modal-image" class="modal-image" src="" alt="Imagen del personaje">
+            <!-- Botón para cambiar la imagen, ubicado en la esquina derecha -->
+<button id="change-image-button" class="change-image-button">
+    <img src="images/transform.webp" alt="Cambiar Imagen" style="width: 50px; height: 50px;">
+</button>
+        </div>
+        <div id="modal-info">
+            <p id="modal-name"></p>
+            <div id="modal-affinity">
+                <img id="affinity-image" src="" alt="Afinidad" />
+            </div>
+            <div id="modal-rareza-image">
+                <img id="rareza-image" src="" alt="Rareza" />
+            </div>
+            <div id="modal-base-stats"></div>
+            <div id="modal-max-stats" style="display: none;"></div>
+            <button id="show-max-stats-button" onclick="toggleMaxStats()">Mostrar Max Stats</button>
+        </div>
+    </div>
+</div>
+
+
+<audio id="background-music" loop>
+    <source src="sounds/system/homescreen.mp3" type="audio/mp3">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
